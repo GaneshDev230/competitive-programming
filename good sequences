@@ -20,10 +20,10 @@ int main() {
        {
            if(c.first>c.second)
            {
-               c1=c.second;
+               c1+=c.second;
            }
            else{
-               c1=c.second-c.first;
+               c1+=c.second-c.first;
            }
        }
    }

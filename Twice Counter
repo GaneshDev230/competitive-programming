@@ -1,0 +1,53 @@
+//https://www.geeksforgeeks.org/problems/twice-counter4236/1
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+
+class Solution
+{
+    public:
+        int countWords(string list[], int n)
+        {
+           //code here.
+           map<string,int>mp;
+           for(int i=0;i<n;i++)
+           {
+               mp[list[i]]++;
+           }
+           int s=0;
+           for(auto c:mp)
+           {
+               if(c.second==2)
+               {
+                   s++;
+                   
+               }
+           }
+           return s;
+        }
+
+};
+
+//{ Driver Code Starts.
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        string list[n];
+        for(int i=0;i<n;i++)
+            cin>>list[i];
+        Solution ob;    
+        cout <<ob.countWords(list, n)<<endl;
+    
+cout << "~" << "\n";
+}
+    return 0;
+}
+
+// } Driver Code Ends

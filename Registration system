@@ -1,0 +1,33 @@
+//https://codeforces.com/contest/4/problem/C
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    vector<string>v;
+    map<string ,int>mp;
+    for(int i=0;i<n;i++)
+    {
+       string a;
+        cin>>a;
+        if(mp.find(a)!=mp.end())
+        {
+            v.push_back(a+to_string(mp[a]));
+            mp[a]++;
+        }
+        else{
+        mp[a]=1;
+        v.push_back("OK");
+            
+        }
+        
+    }
+   for(int i=0;i<n;i++)
+   {
+       cout<<v[i]<<endl;
+   }
+    
+    return 0;
+    
+}

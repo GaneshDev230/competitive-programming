@@ -1,0 +1,46 @@
+//https://www.spoj.com/problems/RPLD/
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{  vector<string>sr;
+    int n;
+    cin>>n;
+    while(n--){
+         map<int,int>mp;
+        int a,b;
+        cin>>a>>b;
+        for(int i=0;i<b;i++)
+        {
+            int c,d;
+            cin>>c>>d;
+            mp[c]=d-mp[c];
+        }
+        int r;
+        for(auto c:mp)
+        {
+            if(c.second==0)
+            {
+             r=0;
+             break;
+            }
+            else{
+                r=c.second;
+            }
+        }
+      
+        if(r==0)
+        {
+         sr.push_back("impossible");
+        }
+        else{
+            sr.push_back("possible");
+          
+        }
+   
+    }
+    for(int i=0;i<sr.size();i++)
+    {
+          cout<<"Scenario #"<<i+1<<": "<<sr[i]<<endl;
+    }
+    return 0;
+}

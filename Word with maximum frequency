@@ -1,0 +1,57 @@
+//https://www.geeksforgeeks.org/problems/word-with-maximum-frequency0120/1
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+
+// } Driver Code Ends
+class Solution {
+  public:
+    string maximumFrequency(string &str) {
+        // Your code foes here
+        vector<string>v;
+        unordered_map<string,int>mp;
+        stringstream text(str);
+        string word;
+        while(getline(text,word,' '))
+        {
+            v.push_back(word);
+            mp[word]++;
+        }
+        int maxf=0;
+        for(auto ele:mp)
+        {
+            maxf=max(maxf,ele.second);
+        }
+        string ans;
+        for(auto res:v)
+        {
+            if(mp[res]==maxf)
+            {
+                ans=res;
+                break;
+            }
+        }
+        return ans+" "+to_string(maxf);
+    }
+};
+
+//{ Driver Code Starts.
+
+int main() {
+    int t;
+    cin >> t;
+    cin.ignore();
+
+    for (int i = 0; i < t; i++) {
+
+        string str;
+        getline(cin, str);
+        Solution ob;
+
+        cout << ob.maximumFrequency(str) << endl;
+        cout << "~" << endl;
+    }
+    return 0;
+}
+// } Driver Code Ends

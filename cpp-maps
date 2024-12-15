@@ -1,0 +1,52 @@
+//https://www.hackerrank.com/challenges/cpp-maps/problem
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <set>
+#include <map>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    int n;
+    cin>>n;
+    map<string,int>mp;
+    for(int i=0;i<n;i++)
+    {
+        int c;
+        string s; int mar;
+        cin>>c;
+        if(c==1)
+        {
+          
+          cin>>s;
+         
+          cin>>mar;
+          mp[s]=mp[s]+mar;
+        }
+        else if(c==2)
+        {
+            cin>>s;
+            mp.erase(s);
+        }
+        else{
+            cin>>s;
+            if(mp.find(s)!=mp.end())
+            {
+                cout<<mp[s]<<endl;
+            }
+            else {
+            
+                cout<<0<<endl;
+        
+            }
+            
+        }
+    }  
+    return 0;
+}
+
+
+

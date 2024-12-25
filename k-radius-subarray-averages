@@ -1,0 +1,35 @@
+//
+class Solution {
+public:
+    vector<int> getAverages(vector<int>& nums, int k) {
+        int n=nums.size();
+       
+        vector<int>re(n,-1);
+         if(2*k+1>n) return re;
+        int j=0;
+        long long s = 0;
+       
+        while(j<n)
+        {
+            if(j<(2*k))
+            {
+               s+=nums[j];
+               j++;
+            }
+            else{
+                s+=nums[j];
+                if(j>=2*k)
+                {
+                int a=s/(2*k+1);
+                re[j-k]=a;
+                
+                  s-=nums[j-2*k];
+                }
+             
+                j++;
+            }
+        }
+        return re;
+        
+    }
+};

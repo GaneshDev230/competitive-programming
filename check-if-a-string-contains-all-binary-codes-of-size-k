@@ -1,0 +1,35 @@
+//https://leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/description/
+class Solution {
+public:
+    bool hasAllCodes(string s, int k) {
+        int n=s.size();
+      set<vector<char>>se;
+      vector<char>temp;
+         int i=0,j=0;
+         while(j<n)
+         {
+            if(j-i+1<k)
+            {
+              temp.push_back(s[j]);
+              j++;
+            }
+            else
+            {
+                temp.push_back(s[j]);
+                se.insert(temp);
+                temp.erase(temp.begin());
+                i++;
+                j++;
+
+            }
+         }
+         if(se.size()==pow(2,k))
+         {
+            return true;
+         }
+         else{
+            return false;
+         }
+        
+    }
+};

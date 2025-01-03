@@ -1,0 +1,29 @@
+//https://leetcode.com/problems/powx-n/
+class Solution {
+public:
+    double myPow(double x, int n) {
+        if((x)==0.00000)
+        {
+            return double(0);
+        }
+        if(n==0)
+        {
+            return double(1);
+        }
+       double ans=myPow(x,abs(double(n))/2);
+        ans=ans*ans;
+        if(n%2!=0)
+        {
+            ans=ans*x;
+        }
+
+       if(n<0)
+       {
+        return double(1/ans);
+       }
+       else
+       {
+        return ans;
+       }
+    }
+};

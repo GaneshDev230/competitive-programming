@@ -1,0 +1,23 @@
+//https://leetcode.com/problems/target-sum/
+class Solution {
+public:
+    void dfs(int i, long long total, vector<int>& nums, int target, int& count) {
+        if (i == nums.size()) {
+            if (total == target) {
+                count++;
+            }
+            return;
+        }
+
+        dfs(i + 1, total + nums[i], nums, target, count);
+
+     
+        dfs(i + 1, total - nums[i], nums, target, count);
+    }
+
+    int findTargetSumWays(vector<int>& nums, int target) {
+        int count = 0;
+        dfs(0, 0, nums, target, count);
+        return count;
+    }
+};

@@ -1,0 +1,40 @@
+//https://leetcode.com/problems/shifting-letters-ii/description/
+class Solution {
+public:
+    string shiftingLetters(string s, vector<vector<int>>& shifts) {
+        int n = s.size();
+        vector<int> pref(n + 1, 0); 
+        
+        
+        for (auto& shift : shifts) {
+            int start = shift[0], end = shift[1], direction = shift[2];
+            
+            if (direction == 1) {
+                pref[start] += 1;  
+                if (end + 1 < n) {
+                    pref[end + 1] -= 1;
+                }
+            } else {
+                pref[start] -= 1; 
+                if (end + 1 < n) {
+                    pref[end + 1] += 1;
+                }
+            }
+        }
+        
+       
+        for (int i = 1; i < n; i++) {
+            pref[i] += pref[i - 1];
+        }
+
+    
+        for (int i = 0; i < n; i++) {
+            int shift = pref[i] % 26;  
+            if (shift != 0) {
+                s[i] = (s[i] - 'a' + shift + 26) % 26 + 'a';
+            }
+        }
+        
+        return s;
+    }
+};

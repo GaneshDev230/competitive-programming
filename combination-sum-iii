@@ -1,0 +1,29 @@
+//https://leetcode.com/problems/combination-sum-iii/
+class Solution {
+public:
+    void dfs(int i, int k, int target, vector<int>& arr, vector<vector<int>>& ans, vector<int>& ds) {
+        if (k == 0) {
+            if (target == 0) {
+                ans.push_back(ds);
+            }
+            return;
+        }
+        for (int j = i; j < arr.size(); j++) {
+            if (arr[j] > target) break; 
+            ds.push_back(arr[j]);
+            dfs(j + 1, k - 1, target - arr[j], arr, ans, ds); 
+            ds.pop_back();
+        }
+    }
+
+    vector<vector<int>> combinationSum3(int k, int n) {
+        vector<vector<int>> ans;
+        vector<int> arr;
+        for (int i = 1; i <= 9; i++) { 
+            arr.push_back(i);
+        }
+        vector<int> ds;
+        dfs(0, k, n, arr, ans, ds);
+        return ans;
+    }
+};

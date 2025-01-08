@@ -1,0 +1,22 @@
+//https://leetcode.com/problems/generate-parentheses/description/
+class Solution {
+public:
+    void dfs(int op, int cl, vector<string>& ans, string res) {
+        if (op == 0 && cl == 0) {
+            ans.push_back(res);
+            return;
+        }
+        if (op > 0) { 
+            dfs(op - 1, cl, ans, res + "(");
+        }
+        if (cl > op) {  
+            dfs(op, cl - 1, ans, res + ")");
+        }
+    }
+
+    vector<string> generateParenthesis(int n) {
+        vector<string> ans;
+        dfs(n, n, ans, "");
+        return ans;
+    }
+};

@@ -1,0 +1,22 @@
+//https://leetcode.com/problems/minimum-number-of-pushes-to-type-word-i/
+class Solution {
+public:
+    int minimumPushes(string word) {
+        int n=word.length();
+        if(n<8)
+        {
+            return n;
+        }
+        int s=n/8;
+        int r=n%8;
+        int count=0;
+        for(int i=1;i<=s;i++)
+        {
+            count+=(i*8);
+        }
+        count+=r*(s+1);
+        return count;
+
+        
+    }
+};

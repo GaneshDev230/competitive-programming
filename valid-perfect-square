@@ -1,0 +1,19 @@
+//https://leetcode.com/problems/valid-perfect-square/
+class Solution {
+public:
+    bool isPerfectSquare(int num) {
+        long long l = 1, h = 46340; 
+        while (l <= h) {
+            long long m = l + (h - l) / 2;
+            long long s = m * m;
+            if (s == num) {
+                return true; 
+            } else if (s > num) {
+                h = m - 1; 
+            } else {
+                l = m + 1;
+            }
+        }
+        return false;
+    }
+};

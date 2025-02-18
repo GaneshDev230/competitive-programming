@@ -1,0 +1,39 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include<bits/stdc++.h>
+using namespace std;
+int frog(int arr[],int i,vector<int>&dp)
+{ if(i==0)
+   {
+    return 0;
+    }
+    
+  
+  if(dp[i]!=-1)
+  {
+    return dp[i];
+  }
+  int take=abs(arr[i]-arr[i-2])+frog(arr,i-2,dp);
+  int take1=abs(arr[i]-arr[i-1])+frog(arr,i-1,dp);
+  dp[i]=min(take,take1);
+  return dp[i];
+}
+int main()
+{
+  int n;
+   cin>>n;
+  vector<int>dp(n,-1);
+ 
+  int arr[n];
+  for(int i=0;i<n;i++)
+  {
+    cin>>arr[i];
+  }
+ cout<< frog(arr,n-1,dp);
+}

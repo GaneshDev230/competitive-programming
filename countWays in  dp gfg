@@ -1,0 +1,62 @@
+//https://www.geeksforgeeks.org/problems/count-number-of-hops-1587115620/1?page=1&category=Dynamic%20Programming&difficulty=Basic,Easy&sortBy=submissions
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+
+// } Driver Code Ends
+
+class Solution {
+  public:
+    // Function to count the number of ways in which frog can reach the top.
+    int slove(int n,vector<int>&dp)
+    { 
+         if(n==0)
+        {
+            return 1;
+        }
+        if(n<0)
+        {
+            return 0;
+        }
+        if(dp[n]!=-1)
+        {
+            return dp[n];
+        }
+        int t1=slove(n-1,dp);
+        int t2=slove(n-2,dp);
+        int t3=slove(n-3,dp);
+        dp[n]=(t1+t2+t3);
+        return dp[n];
+    }
+    int countWays(int n) {
+   
+   
+      vector<int>dp(n+1,-1);
+      return slove(n,dp);
+    }
+};
+
+
+//{ Driver Code Starts.
+int main() {
+    // taking testcases
+    int t;
+    cin >> t;
+
+    while (t--) {
+        // taking number of steps in stair
+        int n;
+        cin >> n;
+        Solution ob;
+        // calling function countWays()
+        cout << ob.countWays(n) << endl;
+
+        cout << "~"
+             << "\n";
+    }
+
+    return 0;
+}
+
+// } Driver Code Ends

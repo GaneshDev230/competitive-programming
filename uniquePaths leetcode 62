@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int slove(int m,int n,vector<vector<int>>&dp)
+    {
+        if(m==1&&n==1)
+        {
+            return 1;
+        }
+        if(m==1||n==1)
+        {
+            return 1;
+        }
+        if(dp[m][n]!=-1)
+        {
+            return dp[m][n];
+        }
+        int up=0;
+        if(m>1)
+        {
+            up=slove(m-1,n,dp);
+        }
+        int left=0;
+        if(n>1)
+        {
+            left=slove(m,n-1,dp);
+        }
+        return dp[m][n]=up+left;
+    }
+     
+    int uniquePaths(int m, int n) {
+        vector<vector<int>>dp(m+1,vector<int>(n+1,-1));
+        return slove(m,n,dp);
+
+        
+    }
+};

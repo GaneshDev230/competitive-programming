@@ -1,0 +1,32 @@
+https://www.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1
+class Solution {
+  public:
+    int maximumSumSubarray(vector<int>& arr, int k) {
+        // code here
+        int n=arr.size();
+        int ans=0;
+        int sum=0;
+        int i=0;
+        int j=0;
+       
+        
+        
+        while(j<n)
+        {
+            if(j<(k-1))
+            {
+                sum+=arr[j];
+                j++;
+            }
+            else{
+                sum+=arr[j];
+                ans=max(ans,sum);
+                sum-=arr[i];
+                i++;
+                j++;
+                
+            }
+        }
+        return ans;
+    }
+};

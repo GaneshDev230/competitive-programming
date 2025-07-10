@@ -1,0 +1,29 @@
+//https://leetcode.com/problems/minimum-positive-sum-subarray/?envType=problem-list-v2&envId=sliding-window
+class Solution {
+public:
+    int minimumSumSubarray(vector<int>& nums, int l, int r) {
+          int n = nums.size();
+    int result = INT_MAX;
+
+    for (int k = l; k <= r; ++k) {
+        int window_sum = 0;
+
+       
+        for (int i = 0; i < k; ++i)
+            window_sum += nums[i];
+
+        if (window_sum > 0)
+            result = min(result, window_sum);
+
+     
+        for (int i = k; i < n; ++i) {
+            window_sum += nums[i] - nums[i - k];
+            if (window_sum > 0)
+                result = min(result, window_sum);
+        }
+    }
+
+    return result == INT_MAX ? -1 : result;
+        
+    }
+};

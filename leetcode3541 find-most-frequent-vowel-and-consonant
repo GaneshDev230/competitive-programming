@@ -1,0 +1,33 @@
+//https://leetcode.com/problems/find-most-frequent-vowel-and-consonant/?envType=daily-question&envId=2025-09-13
+class Solution {
+public:
+    int maxFreqSum(string s) {
+        int n=s.length();
+        map<char,int>map;
+        for(int i=0;i<n;i++)
+        {
+            map[s[i]]++;
+        }
+        int ans;
+        int vows=0;
+        int cons=0;
+        for(auto c:map)
+        {
+            if(c.first=='a'||c.first=='e'||c.first=='i'||c.first=='o'||c.first=='u')
+            {
+                if(vows<c.second)
+                {
+                    vows=c.second;
+                }
+            }else
+            {
+                if(cons<c.second)
+                {
+                    cons=c.second;
+                }
+            }
+        }
+        return vows+cons;
+        
+    }
+};
